@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, MessageCircle, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
+import { Instagram } from "@/components/ui/Icons";
 import Image from "next/image";
 import { Product } from "@/data/products";
 import { useEffect } from "react";
@@ -56,14 +57,17 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
           />
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ type: "spring", damping: 30, stiffness: 400, mass: 0.8 }}
             className="relative w-full max-w-4xl bg-surface border border-white/10 rounded-[32px] overflow-hidden shadow-2xl flex flex-col lg:flex-row max-h-[90vh]"
           >
             <button
-              onClick={onClose}
+              onClick={() => {
+                if (window.navigator.vibrate) window.navigator.vibrate(5);
+                onClose();
+              }}
               className="absolute top-4 right-4 z-20 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center backdrop-blur-sm border border-white/10 transition-colors"
               aria-label="Tutup detail produk"
             >
@@ -123,17 +127,31 @@ export default function ProductModal({ product, isOpen, onClose }: ProductModalP
                 </div>
               </div>
 
-              <div className="mt-auto pt-6 border-t border-white/5">
+              <div className="mt-auto pt-6 border-t border-white/5 space-y-3">
                 <a
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    if (window.navigator.vibrate) window.navigator.vibrate([10, 30, 10]);
+                  }}
                   className="w-full flex items-center justify-center gap-3 bg-cta hover:bg-cta-hover active:scale-[0.98] transition-all duration-200 text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-cta/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414]"
                 >
                   <MessageCircle className="w-6 h-6 fill-white/20" />
                   Beli via WhatsApp
                 </a>
-                <p className="text-center text-text-muted text-xs mt-4">
+                
+                <a
+                  href="https://instagram.com/mvgs.store"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 active:scale-[0.98] transition-all duration-200 text-white py-4 rounded-2xl font-bold text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414]"
+                >
+                  <Instagram className="w-6 h-6" />
+                  Lihat di Instagram
+                </a>
+
+                <p className="text-center text-text-muted text-xs mt-2">
                   Stok terbatas! Klik tombol di atas untuk konfirmasi ketersediaan.
                 </p>
               </div>

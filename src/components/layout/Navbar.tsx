@@ -63,6 +63,7 @@ export default function Navbar() {
     { name: "Layanan", href: "#layanan" },
     { name: "Testimoni", href: "#testimoni" },
     { name: "FAQ", href: "#faq" },
+    { name: "Instagram", href: "https://instagram.com/mvgs.store" },
   ];
 
   return (
@@ -71,6 +72,7 @@ export default function Navbar() {
         "sticky top-0 z-[var(--z-sticky)] transition-all duration-300 border-b border-[#1a1a1a]",
         scrolled ? "glass-nav py-2" : "bg-transparent py-4"
       )}
+      style={{ paddingTop: "max(1rem, env(safe-area-inset-top))" }}
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[72px]">
@@ -93,6 +95,8 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="text-text-muted hover:text-white hover:bg-white/5 transition-all duration-200 text-sm font-medium py-2 px-4 min-h-[44px] inline-flex items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               >
                 {link.name}
@@ -104,7 +108,10 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+              if (window.navigator.vibrate) window.navigator.vibrate(10);
+            }}
             className="md:hidden flex items-center justify-center min-h-[48px] min-w-[48px] -mr-2 text-text-muted hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded-lg transition-colors"
             aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
             aria-expanded={isMenuOpen}
@@ -128,6 +135,8 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="block text-text-muted hover:text-white hover:bg-white/5 px-4 py-3.5 rounded-lg text-base font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
               >
                 {link.name}

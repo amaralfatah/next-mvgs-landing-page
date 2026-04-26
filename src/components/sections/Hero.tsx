@@ -12,6 +12,21 @@ export default function Hero() {
     >
       <div className="absolute inset-0 noise z-0" />
       
+      {/* Scroll Down Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] text-text-muted uppercase tracking-[0.2em]">Scroll untuk detail</span>
+        <motion.div 
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-12 bg-gradient-to-b from-accent-blue/50 to-transparent"
+        />
+      </motion.div>
+      
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full relative z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-blue/10 rounded-full blur-[160px] pointer-events-none opacity-50" />
         <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] pointer-events-none" />
@@ -38,17 +53,25 @@ export default function Hero() {
                 href="https://wa.me/628568773490?text=Halo%20admin%20mvgs.store"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  if (window.navigator.vibrate) window.navigator.vibrate([10, 30, 10]);
+                }}
                 className="group relative flex items-center justify-center gap-2.5 bg-cta hover:bg-cta-hover transition-all duration-300 text-white px-8 py-4 w-full sm:w-auto rounded-xl font-bold text-base shadow-[0_0_20px_rgba(22,163,74,0.3)] hover:shadow-[0_0_30px_rgba(22,163,74,0.5)] hover:-translate-y-1 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <MessageCircle className="w-5 h-5 fill-white/20 group-hover:rotate-12 transition-transform" />
                 Chat Admin
               </a>
               <a
-                href="#produk"
+                href="https://instagram.com/mvgs.store"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  if (window.navigator.vibrate) window.navigator.vibrate(10);
+                }}
                 className="flex items-center justify-center gap-2.5 bg-white/5 hover:bg-white/10 transition-all duration-300 border border-white/10 text-white px-8 py-4 w-full sm:w-auto rounded-xl font-bold text-base hover:-translate-y-1 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <ShoppingBag className="w-5 h-5" />
-                Lihat Produk
+                Lihat Katalog
               </a>
             </div>
           </motion.div>

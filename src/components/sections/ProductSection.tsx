@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import ProductCard from "@/components/ui/ProductCard";
 import ProductModal from "@/components/ui/ProductModal";
 import { products, Product } from "@/data/products";
@@ -54,6 +55,28 @@ export default function ProductSection() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+        className="mt-16 text-center"
+      >
+        <p className="text-text-muted mb-6">Mencari unit lain yang tidak ada di sini?</p>
+        <a
+          href="https://instagram.com/mvgs.store"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            if (window.navigator.vibrate) window.navigator.vibrate(10);
+          }}
+          className="inline-flex items-center gap-3 bg-white text-black hover:bg-white/90 border border-white px-10 py-5 rounded-2xl font-bold transition-all hover:-translate-y-1 shadow-xl shadow-white/10 active:scale-[0.98]"
+        >
+          Buka Katalog Lengkap di Instagram
+          <ExternalLink className="w-5 h-5" />
+        </a>
+      </motion.div>
 
       <ProductModal 
         product={selectedProduct}

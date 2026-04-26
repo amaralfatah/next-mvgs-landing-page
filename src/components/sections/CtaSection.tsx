@@ -25,31 +25,37 @@ export default function CtaSection() {
         <p className="text-lg text-text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
           Chat admin sekarang — respons cepat, harga bersahabat, transaksi aman terjamin
         </p>
-        <div className="flex justify-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="https://wa.me/628568773490?text=Halo%20admin%20mvgs.store"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 text-white px-10 py-4 min-h-[52px] rounded-xl font-bold text-lg shadow-xl shadow-cta/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
+            onClick={() => {
+              if (window.navigator.vibrate) window.navigator.vibrate([10, 30, 10]);
+            }}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 text-white px-8 py-4 min-h-[56px] rounded-2xl font-bold text-base shadow-xl shadow-cta/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
             aria-label="Chat Admin mvgs.store via WhatsApp"
           >
-            <MessageCircle className="w-6 h-6 fill-white/20" />
-            Chat Admin Sekarang
+            <MessageCircle className="w-5 h-5 fill-white/20" />
+            Chat Admin
           </a>
-        </div>
-        <div className="mt-6 text-sm text-[#A0A0A0]">
-          Atau follow Instagram kami{" "}
           <a
             href="https://instagram.com/mvgs.store"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent-blue hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue/50 rounded transition-shadow"
-            aria-label="Kunjungi Instagram mvgs.store"
+            onClick={() => {
+              if (window.navigator.vibrate) window.navigator.vibrate(10);
+            }}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 text-white px-8 py-4 min-h-[56px] rounded-2xl font-bold text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0D0D0D]"
+            aria-label="Kunjungi Katalog Instagram mvgs.store"
           >
-            <Camera className="w-4 h-4" />
-            @mvgs.store
+            <Camera className="w-5 h-5" />
+            Lihat Katalog di Instagram
           </a>
         </div>
+        <p className="mt-8 text-sm text-[#A0A0A0]">
+          Update stok setiap hari — Jangan sampai ketinggalan unit favoritmu!
+        </p>
       </motion.div>
     </section>
   );

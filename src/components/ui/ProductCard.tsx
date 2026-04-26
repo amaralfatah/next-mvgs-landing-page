@@ -15,8 +15,11 @@ export default function ProductCard({ product, priority, onClick }: ProductCardP
 
   return (
     <article 
-      onClick={onClick}
-      className="bg-prod-bg border border-prod-border rounded-2xl overflow-hidden hover:border-prod-border-hover hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/50 transition-all duration-300 group flex flex-col cursor-pointer relative"
+      onClick={() => {
+        if (window.navigator.vibrate) window.navigator.vibrate(10);
+        onClick?.();
+      }}
+      className="bg-prod-bg border border-prod-border rounded-2xl overflow-hidden hover:border-prod-border-hover hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/60 transition-all duration-500 group flex flex-col cursor-pointer relative"
     >
       <div className="aspect-[4/3] bg-prod-visual overflow-hidden relative">
         <Image
@@ -47,8 +50,11 @@ export default function ProductCard({ product, priority, onClick }: ProductCardP
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="w-full inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 text-white min-h-[48px] rounded-xl font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] relative z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (window.navigator.vibrate) window.navigator.vibrate([10, 30, 10]);
+            }}
+            className="w-full inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta-hover hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-200 text-white min-h-[48px] rounded-xl font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] relative z-20 shadow-lg shadow-cta/20"
             aria-label={`Tanya harga ${product.name} via WhatsApp`}
           >
             <MessageCircle className="w-4 h-4 fill-white/20" />

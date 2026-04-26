@@ -9,6 +9,7 @@ import HowToBuySection from "@/components/sections/HowToBuySection";
 import TestimonialSection from "@/components/sections/TestimonialSection";
 import FaqSection from "@/components/sections/FaqSection";
 import CtaSection from "@/components/sections/CtaSection";
+import InstagramSection from "@/components/sections/InstagramSection";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Hero />
         <TrustBadges />
         <ProductSection />
+        <InstagramSection />
         <ServicesSection />
         <HowToBuySection />
         <TestimonialSection />
