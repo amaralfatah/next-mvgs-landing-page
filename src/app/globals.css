@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0A0A0A;
+  --color-surface: #141414;
+  --color-surface-hover: #1C1C1C;
+  --color-border-def: #222222;
+  --color-border-hover: #333333;
+  --color-text-muted: #A0A0A0;
+  --color-text-main: #F5F5F5;
+  --color-cta: #16A34A;
+  --color-cta-hover: #15803D;
+  --color-prod-bg: #161412;
+  --color-prod-visual: #2C2A28;
+  --color-prod-border: #2A2826;
+  --color-prod-border-hover: #3A3836;
+  --color-accent-blue: #2563EB;
+  --color-star-yellow: #EAB308;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6); }
+    70% { box-shadow: 0 0 0 12px rgba(22, 163, 74, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+  }
+
+  /* Z-index Scale */
+  --z-negative: -1;
+  --z-base: 0;
+  --z-above: 10;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-max: 9999;
+}
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F5F5F5;
+}
+
+html {
+  scroll-padding-top: 5rem; /* ~80px */
+}
+
+section, [id] {
+  scroll-margin-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer utilities {
+  .floating-wa {
+    animation: pulse-ring 2s infinite;
+  }
+  
+  .glass-nav {
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  .bg-radial-cta {
+    background: radial-gradient(ellipse at 50% 50%, #1a1a1a 0%, #0D0D0D 60%);
+  }
+
+  @media (max-width: 1024px) {
+    .no-scrollbar-mobile::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar-mobile {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-cta);
+    color: white;
+    padding: 1rem 2rem;
+    z-index: var(--z-max);
+    transition: top 0.3s ease;
+    font-weight: bold;
+    border-radius: 0 0 12px 0;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 5px;
+  border: 2px solid #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
